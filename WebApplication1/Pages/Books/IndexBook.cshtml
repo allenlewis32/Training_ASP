@@ -1,10 +1,9 @@
 ﻿@page
 @model WebApplication1.Pages.Books.IndexBookModel
-@{
-}
 
 <br />
 <h1>Books List</h1>
+<a class="btn-primary btn-sm" href="/Books/CreateBook">Create new book</a>
 <table class="table">
 	<thead>
 		<tr>
@@ -19,8 +18,8 @@
 		@foreach (var book in Model.bookList)
 		{
 			<tr>
-				<td>@book.Id</td>
-				<td>@book.BookName</td>
+				<td>@book.BookCode</td>
+				<td>@book.BookTitle</td>
 				<td>@book.Author</td>
 				<td>@book.Publication</td>
 				<td>@book.Price</td>
