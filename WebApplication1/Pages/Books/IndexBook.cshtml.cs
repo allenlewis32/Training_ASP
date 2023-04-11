@@ -7,6 +7,7 @@ namespace WebApplication1.Pages.Books
 	public class IndexBookModel : PageModel
 	{
 		public List<Book> bookList = new();
+		public string message = "", messageType = "";
 		public void OnGet()
 		{
 			try

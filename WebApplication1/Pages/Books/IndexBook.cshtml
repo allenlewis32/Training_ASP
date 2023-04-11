@@ -1,7 +1,25 @@
 ﻿@page
 @model WebApplication1.Pages.Books.IndexBookModel
+@{
+	ViewData["Title"] = "Books list";
+}
 
-<br />
+<style>
+	a {
+		text-decoration: none;
+	}
+</style>
+
+<div id="message">
+	@if (Model.message.Length > 0)
+	{
+		<div class="alert @Model.messageType">
+			@Model.message
+			<button class="btn-close" onclick="document.getElementById('message').innerHTML=''"></button>
+		</div>
+	}
+</div>
+
 <h1>Books List</h1>
 <a class="btn-primary btn-sm" href="/Books/CreateBook">Create new book</a>
 <table class="table">
@@ -12,6 +30,8 @@
 			<th>Author</th>
 			<th>Publication</th>
 			<th>Price</th>
+			<th></th>
+			<th></th>
 		</tr>
 	</thead>
 	<tbody>
@@ -23,6 +43,8 @@
 				<td>@book.Author</td>
 				<td>@book.Publication</td>
 				<td>@book.Price</td>
+				<td><a class="btn-primary btn-sm" href="/Books/EditBook?bookCode=@book.BookCode">Edit Book</a></td>
+				<td><a class="btn-primary btn-sm" href="/Books/DeleteBook?bookCode=@book.BookCode">Delete Book</a></td>
 			</tr>
 		}
 	</tbody>

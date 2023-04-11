@@ -7,7 +7,7 @@ namespace WebApplication1.Pages.Books
     public class CreateBookModel : PageModel
     {
 		Book book = new();
-		public string successMessage = "", errorMessage = "";
+		public string message = "", messageType="";
         public void OnGet()
         {
         }
@@ -36,15 +36,15 @@ namespace WebApplication1.Pages.Books
 					$"'{book.RackNum}', '{book.DateArrival}', '{book.SupplierID}')";
 				command.ExecuteNonQuery();
 
-				successMessage = "Book added successfully";
-				errorMessage = "";
+				message = "Book added successfully";
+				messageType = "alert-success";
 				
 				connection.Close();
 			}
 			catch (Exception ex)
 			{
-				errorMessage = ex.Message;
-				successMessage = "";
+				message = ex.Message;
+				messageType = "alert-danger";
 			}
 		}
     }

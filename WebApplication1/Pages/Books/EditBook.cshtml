@@ -1,7 +1,7 @@
 ﻿@page
-@model WebApplication1.Pages.Books.CreateBookModel
+@model WebApplication1.Pages.Books.EditBookModel
 @{
-	ViewData["Title"] = "Add Book";
+	ViewData["Title"] = "Edit Book";
 }
 
 <div id="message">
@@ -15,70 +15,71 @@
 </div>
 <br />
 <form method="post">
+	<input type="hidden" name="originalBookCode" value="@Model.book.BookCode" />
 	<div class="row mb-3">
 		<label class="col-sm-2 col-form-label">Book Code</label>
 		<div class="col-sm-4">
-			<input class="form-control" name="bookCode" required/>
+			<input class="form-control" name="bookCode" value="@Model.book.BookCode" required />
 		</div>
 	</div>
 	<div class="row mb-3">
 		<label class="col-sm-2 col-form-label">Book Title</label>
 		<div class="col-sm-4">
-			<input class="form-control" name="bookTitle" required/>
+			<input class="form-control" name="bookTitle" value="@Model.book.BookTitle" required />
 		</div>
 	</div>
 	<div class="row mb-3">
 		<label class="col-sm-2 col-form-label">Category</label>
 		<div class="col-sm-4">
-			<input class="form-control" name="category" required/>
+			<input class="form-control" name="category" value="@Model.book.Category" required />
 		</div>
 	</div>
 	<div class="row mb-3">
 		<label class="col-sm-2 col-form-label">Author</label>
 		<div class="col-sm-4">
-			<input class="form-control" name="author" required/>
+			<input class="form-control" name="author" value="@Model.book.Author" required />
 		</div>
 	</div>
 	<div class="row mb-3">
 		<label class="col-sm-2 col-form-label">Publication</label>
 		<div class="col-sm-4">
-			<input class="form-control" name="publication" required/>
+			<input class="form-control" name="publication" value="@Model.book.Publication" required />
 		</div>
 	</div>
 	<div class="row mb-3">
 		<label class="col-sm-2 col-form-label">Publish Date</label>
 		<div class="col-sm-4">
-			<input type="date" class="form-control" name="publishDate" required/>
+			<input type="date" class="form-control" name="publishDate" value="@Model.book.PublishDate.ToString("yyyy-dd-MM")" required />
 		</div>
 	</div>
 	<div class="row mb-3">
 		<label class="col-sm-2 col-form-label">Book Edition</label>
 		<div class="col-sm-4">
-			<input type="number" class="form-control" name="bookEdition" required/>
+			<input type="number" class="form-control" name="bookEdition" value="@Model.book.BookEdition" required />
 		</div>
 	</div>
 	<div class="row mb-3">
 		<label class="col-sm-2 col-form-label">Price</label>
 		<div class="col-sm-4">
-			<input type="number" class="form-control" name="price" requried/>
+			<input type="number" class="form-control" name="price" value="@Model.book.Price" requried />
 		</div>
 	</div>
 	<div class="row mb-3">
 		<label class="col-sm-2 col-form-label">Rack Number</label>
 		<div class="col-sm-4">
-			<input class="form-control" name="rackNum" required/>
+			<input class="form-control" name="rackNum" value="@Model.book.RackNum" required />
 		</div>
 	</div>
 	<div class="row mb-3">
 		<label class="col-sm-2 col-form-label">Date Arrival</label>
 		<div class="col-sm-4">
-			<input type="date" class="form-control" name="dateArrival" required/>
+			<input type="date" class="form-control" name="dateArrival" value="@Model.book.DateArrival.ToString("yyyy-dd-MM")" required />
 		</div>
 	</div>
 	<div class="row mb-3">
 		<label class="col-sm-2 col-form-label">Supplier ID</label>
 		<div class="col-sm-4">
-			<input class="form-control" name="supplierID" required/>
+			<input class="form-control" name="supplierID" value="@Model.book.SupplierID" required />
 		</div>
 	</div>
 	<div>
