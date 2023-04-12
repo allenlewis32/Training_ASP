@@ -79,7 +79,6 @@ namespace WebApplication1.Pages.Books
 
 				message = "Book updated successfully";
 				messageType = "alert-success";
-
 				connection.Close();
 			}
 			catch (Exception ex)
