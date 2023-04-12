@@ -77,8 +77,10 @@ namespace WebApplication1.Pages.Books
 					$"WHERE BOOK_CODE='{Request.Form["originalBookCode"]}'";
 				command.ExecuteNonQuery();
 
-				message = "Book updated successfully";
-				messageType = "alert-success";
+				TempData["message"] = "Book updated successfully";
+				TempData["messageType"] = "alert-success";
+				Response.Redirect("/Books/IndexBook");
+
 				connection.Close();
 			}
 			catch (Exception ex)

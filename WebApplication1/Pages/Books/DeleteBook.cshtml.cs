@@ -11,6 +11,8 @@ namespace WebApplication1.Pages.Books
 		public string message = "", messageType = "";
         public void OnGet()
         {
+			message = ((string?)TempData["message"]) ?? "";
+			messageType = ((string?)TempData["messageType"]) ?? "";
 			bookCode = Request.Query["bookCode"];
 			try
 			{
@@ -49,6 +51,8 @@ namespace WebApplication1.Pages.Books
 				command.CommandText = $"DELETE FROM LMS_BOOK_DETAILS WHERE BOOK_CODE='{Request.Form["bookCode"]}'";
 				if(command.ExecuteNonQuery() > 0)
 				{
+					TempData["message"] = "Book deleted successfully";
+					TempData["messageType"] = "alert-danger";
 					Response.Redirect("/Books/IndexBook");
 				} else
 				{

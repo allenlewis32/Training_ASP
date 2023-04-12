@@ -29,15 +29,28 @@ namespace WebApplication1.Pages.Books
 				book.RackNum = Request.Form["rackNum"];
 				book.DateArrival = DateOnly.FromDateTime(Convert.ToDateTime(Request.Form["dateArrival"]));
 				book.SupplierID = Request.Form["supplierID"];
-
-				SqlCommand command = connection.CreateCommand();
-				command.CommandText = $"INSERT INTO LMS_BOOK_DETAILS VALUES('{book.BookCode}', '{book.BookTitle}', '{book.Category}', " +
-					$"'{book.Author}', '{book.Publication}', '{book.PublishDate}', {book.BookEdition}, {book.Price}, " +
-					$"'{book.RackNum}', '{book.DateArrival}', '{book.SupplierID}')";
+				
+				SqlCommand command = new SqlCommand("insert_book", connection);
+				command.CommandType = System.Data.CommandType.StoredProcedure;
+				command.Parameters.AddWithValue("@bookCode", book.BookCode);
+				command.Parameters.AddWithValue("@bookTitle", book.BookTitle);
+				command.Parameters.AddWithValue("@category", book.Category);
+				command.Parameters.AddWithValue("@author", book.Author);
+				command.Parameters.AddWithValue("@publication", book.Publication);
+				command.Parameters.AddWithValue("@publishDate", book.PublishDate);
+				command.Parameters.AddWithValue("@bookEdition", book.BookEdition);
+				command.Parameters.AddWithValue("@price", book.Price);
+				command.Parameters.AddWithValue("@rackNum", book.RackNum);
+				command.Parameters.AddWithValue("@dateArrival", book.DateArrival);
+				command.Parameters.AddWithValue("@supplierID", book.SupplierID);
 				command.ExecuteNonQuery();
 
 				message = "Book added successfully";
 				messageType = "alert-success";
+
+				TempData["message"] = message;
+				TempData["messageType"] = messageType;
+				Response.Redirect("/Books/IndexBook");
 				
 				connection.Close();
 			}

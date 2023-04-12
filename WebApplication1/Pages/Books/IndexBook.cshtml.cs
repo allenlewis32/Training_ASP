@@ -10,6 +10,8 @@ namespace WebApplication1.Pages.Books
 		public string message = "", messageType = "";
 		public void OnGet()
 		{
+			message = ((string?)TempData["message"])??"";
+			messageType = ((string?)TempData["messageType"]) ?? "";
 			try
 			{
 				SqlConnection connection = new("Data Source=DESKTOP-IQRSRP8;initial Catalog=LMS;Integrated Security=True;Encrypt=False;");
